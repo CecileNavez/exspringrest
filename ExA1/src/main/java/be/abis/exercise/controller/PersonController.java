@@ -17,7 +17,7 @@ public class PersonController {
 	PersonService personService;
 	
 	@GetMapping("{id}")
-	public Person findPerson(@PathVariable("id") int id) {
+	public Person findPersonById(@PathVariable("id") int id) {
 			return personService.findPerson(id);
 	}
 	
