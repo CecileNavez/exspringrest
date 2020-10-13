@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import be.abis.exercise.exception.PersonCanNotBeDeletedException;
+import be.abis.exercise.model.Login;
 import be.abis.exercise.model.Person;
 import be.abis.exercise.service.PersonService;
 
@@ -24,8 +25,6 @@ public class PersonController {
 	@Autowired
 	PersonService personService;
 	
-	Person loggedPerson;
-			
 	@GetMapping("{id}")
 	public Person findPersonById(@PathVariable("id") int id) {
 		return personService.findPerson(id);
@@ -59,11 +58,11 @@ public class PersonController {
 		}
 	}
 	
-	// 
+	//login
+	
 	@PostMapping("/login")
-	public Person submitLogin(@RequestBody Person p) {
-		loggedPerson = personService.findPerson(p.getEmailAddress(), p.getPassword());
-		return personService.findPerson(loggedPerson.getEmailAddress(), p.getPassword());
+	public Person submitLogin(@RequestBody Login l) {
+		return personService.findPerson(l.getEmailAddress(), l.getPassword());
 	}
 	
 	
