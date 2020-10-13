@@ -21,13 +21,14 @@ public class ApiPersonService implements PersonService {
 	
 	@Override
 	public ArrayList<Person> getAllPersons() {
+		
 		return null;
 	}
 
 	@Override
 	public Person findPerson(int id) {
-		
-		return null;
+		Person p = rt.getForObject(baseUri + "/" + id, Person.class);
+		return p;
 	}
 
 	@Override
@@ -41,19 +42,20 @@ public class ApiPersonService implements PersonService {
 
 	@Override
 	public void addPerson(Person p) throws IOException {
-		// TODO Auto-generated method stub
+		rt.postForObject(baseUri, p, Void.class);
 		
 	}
 
 	@Override
 	public void deletePerson(int id) throws PersonCanNotBeDeletedException {
-		// TODO Auto-generated method stub
+		rt.delete(baseUri + "/" + id);
 		
 	}
 
 	@Override
 	public void changePassword(Person p, String newPswd) throws IOException {
-		// TODO Auto-generated method stub
+		p.setPassword(newPswd);
+		rt.put(baseUri + "/" + p.getPersonId(), p);
 		
 	}
 

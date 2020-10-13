@@ -27,7 +27,6 @@ public class AbisTrainingService implements TrainingService {
 		return courseService;
 	}
 
-
 	public void setCourseService(CourseService courseService) {
 		this.courseService = courseService;
 	}
@@ -49,17 +48,17 @@ public class AbisTrainingService implements TrainingService {
 
 	@Override
 	public void addPerson(Person p) throws IOException {
-		
+		personService.addPerson(p);
 	}
 
 	@Override
 	public void deletePerson(int id) throws PersonCanNotBeDeletedException {
-				
+		personService.deletePerson(id);
 	}
 
 	@Override
 	public void changePassword(Person p, String newPswd) throws IOException {
-				
+		personService.changePassword(p, newPswd);
 	}
 
 	@Override
