@@ -59,7 +59,7 @@ public class PersonController {
 		}
 	}
 	
-	// login : does not work
+	// 
 	@PostMapping("/login")
 	public Person submitLogin(@RequestBody Person p) {
 		loggedPerson = personService.findPerson(p.getEmailAddress(), p.getPassword());
