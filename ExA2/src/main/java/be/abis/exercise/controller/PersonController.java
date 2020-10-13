@@ -24,7 +24,7 @@ public class PersonController {
 	@Autowired
 	PersonService personService;
 	
-	Person PersonToLog;
+	Person loggedPerson;
 			
 	@GetMapping("{id}")
 	public Person findPersonById(@PathVariable("id") int id) {
@@ -62,8 +62,8 @@ public class PersonController {
 	// login : does not work
 	@PostMapping("/login")
 	public Person submitLogin(@RequestBody Person p) {
-		PersonToLog = personService.findPerson(p.getEmailAddress(), p.getPassword());
-		return PersonToLog.findPerson(loggedPerson.getEmailAddress(), p.getPassword());
+		loggedPerson = personService.findPerson(p.getEmailAddress(), p.getPassword());
+		return personService.findPerson(loggedPerson.getEmailAddress(), p.getPassword());
 	}
 	
 	
