@@ -1,7 +1,10 @@
 package be.abis.exercise.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Login {
 	
+	@JsonProperty("email")
 	private String emailAddress;
 	private String password;
 	
